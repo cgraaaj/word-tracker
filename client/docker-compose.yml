@@ -1,0 +1,18 @@
+version: "3.7"
+
+services:
+  lincolns_dictionary:
+    container_name: lincolnsDictionary
+    image: raju6713/lincolns_dictionary
+    env_file: .env
+    build:
+      context: .
+      # dockerfile: Dockerfile.prod
+      args: 
+        - REACT_APP_DICTIONARY_API=$REACT_APP_DICTIONARY_API
+        - REACT_APP_WORDTRACKER_API=$REACT_APP_WORDTRACKER_API
+    ports:
+      - 3006:80
+    environment:
+      - TZ=Asia/Kolkata
+    restart: unless-stopped
