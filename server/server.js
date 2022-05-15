@@ -59,8 +59,8 @@ const options = {
   connectTimeoutMS: 10000,
 };
 
-app.listen(3005,() => {
-  console.log("server is running ", 3005);
+app.listen(5000,() => {
+  console.log("server is running ", 5000);
   mongoose
     .connect(url, options)
     .then(function () {
