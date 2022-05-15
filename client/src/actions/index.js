@@ -1,6 +1,6 @@
 // import _ from "lodash";
 
-import { dictionaryAPI, GbookAPI } from "../apis/dict";
+import { dictionaryAPI, GbookAPI } from "../apis/api";
 import _ from "lodash";
 
 import history from "../history";

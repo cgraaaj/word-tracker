@@ -1,5 +1,5 @@
-import { wordTrackerAPI } from "../apis/dict";
-import { ANONYMOUS_USER_ID, ANONYMOUS_BOOK_ID } from "../utils/constants"
+import { wordTrackerAPI } from "../apis/api";
+import { ANONYMOUS_USER_ID, ANONYMOUS_BOOK_ID, GRAPHQL_API } from "../utils/constants"
 
 const getBookIds = async (gbooks) => {
   console.log(gbooks);
@@ -11,7 +11,7 @@ const getBookIds = async (gbooks) => {
     }
   }`;
   var bookResp = await wordTrackerAPI.post(
-    "",
+    `${GRAPHQL_API}`,
     {
       query,
     },
@@ -58,7 +58,7 @@ const getBookIds = async (gbooks) => {
       }
     }`;
     let bookResp = await wordTrackerAPI.post(
-      "",
+      `${GRAPHQL_API}`,
       {
         query,
       },
@@ -106,7 +106,7 @@ export const createUser = async (currentUser) => {
 }`;
 
   let userResp = await wordTrackerAPI.post(
-    "",
+    `${GRAPHQL_API}`,
     {
       query,
     },
@@ -124,7 +124,7 @@ export const createUser = async (currentUser) => {
 
 export const getUser = async (currentUser) => {
   let user = await wordTrackerAPI.post(
-    "",
+    `${GRAPHQL_API}`,
     {
       query: `{
         userOne(filter:{guserId:"${currentUser.getBasicProfile().getId()}"}){
@@ -175,7 +175,7 @@ export const getBooks = async (user, gbookResponse) => {
   }`;
 
     let userResp = await wordTrackerAPI.post(
-      "",
+      `${GRAPHQL_API}`,
       {
         query,
         variables: {
@@ -228,7 +228,7 @@ export const createWord = async (
 ) => {
   // check if the word exists
   let word = await wordTrackerAPI.post(
-    "",
+    `${GRAPHQL_API}`,
     {
       query: `{
         wordOne(filter:{search_word:"${wordData.search_word}"}){
@@ -290,7 +290,7 @@ export const createWord = async (
     // update word data with userid
     if (update) {
       let word = await wordTrackerAPI.post(
-        "",
+        `${GRAPHQL_API}`,
         {
           query: `mutation wordUpdateOne($wordUserIds: [UpdateOneWordUserIdsInput]){
           wordUpdateOne(filter:{search_word:"${wordData.search_word}"} record:{
@@ -327,7 +327,7 @@ export const createWord = async (
   wordUserIds.push(user);
   console.log(wordData)
   word = await wordTrackerAPI.post(
-    "",
+    `${GRAPHQL_API}`,
     {
       query: `mutation wordCreateOne($definitions: [String]!, $wordUserIds: [WordUserIdsInput], $phonetic: WordPhoneticInput){
         wordCreateOne(record:{
@@ -400,7 +400,7 @@ export const getWords = async (userId, bookId) => {
     }`
   }
   let words = await wordTrackerAPI.post(
-    "",
+    `${GRAPHQL_API}`,
     {
       query,
     },

@@ -5,6 +5,6 @@ COPY package.json ./
 RUN npm install --silent
 COPY . .
 
-EXPOSE 3005
+EXPOSE 5000
 
 ENTRYPOINT ["npm", "start"]
