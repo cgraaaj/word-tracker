@@ -280,9 +280,10 @@ export const createWord = async (
       wordUserIds.splice(userIndex, 1, user);
       update = true;
       console.log("new bookId added");
-    } else if(user && user.bookIds.includes(bookId)){
-      // do user based word search like if different user save same word with different meaning!!!
     } 
+    // else if(user && user.bookIds.includes(bookId)){
+    //   // do user based word search like if different user save same word with different meaning!!!
+    // } 
     else {
       console.log("nothing to update");
       return { message: "nothing to update", payload: word };
